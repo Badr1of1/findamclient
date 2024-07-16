@@ -24,6 +24,26 @@ const MyListingsPage = () => {
     fetchUserItems();
   }, []);
 
+  const handleDelete = async (itemId) => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      console.error('No token found');
+      return;
+    }
+
+    try {
+      await axios.delete(`https://findam.onrender.com/api/v1/items/${itemId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      setItems(items.filter(item => item._id !== itemId));
+    } catch (error) {
+      console.error('Failed to delete item:', error);
+    }
+  };
+
   return (
     <div>
       <h1>My Listings</h1>
@@ -36,6 +56,7 @@ const MyListingsPage = () => {
             <p>{item.location}</p>
             <p>{item.contactInfo}</p>
             <p>Status: {item.status}</p>
+            <button className='delete-button' onClick={() => handleDelete(item._id)}>Delete</button>
           </div>
         ))}
       </div>

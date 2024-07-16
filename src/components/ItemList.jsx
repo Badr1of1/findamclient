@@ -35,7 +35,7 @@ const ItemList = () => {
     <section className='card-container'>
         {items.slice().reverse().map((item) => (
           <div className='card' key={item._id}>
-            {item.photoUrl && <img src={item.photoUrl} alt={item.description} />}
+            {item.photoUrl && <img src={item.photoUrl.replace('http://', 'https://')} alt={item.description} />}
             <Link className='card-title' to={`/items/${item._id}`}>{item.itemName}</Link>
             <p className='card-description'>{item.description}</p>
             <p>{item.location}</p>
