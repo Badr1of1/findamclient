@@ -5,7 +5,7 @@ const ProfilePage = () => {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/auth/profile', {
+    axios.get('https://findam.netlify.app/api/auth/profile', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },

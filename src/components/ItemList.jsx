@@ -15,7 +15,7 @@ const ItemList = () => {
       }
 
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/items',{
+        const response = await axios.get('https://findam.netlify.app/api/v1/items',{
             headers: {
                 'Authorization': `Bearer ${token}`
             }

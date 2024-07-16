@@ -8,7 +8,7 @@ const MyListingsPage = () => {
   const fetchUserItems = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/v1/user/items', {
+      const response = await axios.get('https://findam.netlify.app/api/v1/user/items', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
