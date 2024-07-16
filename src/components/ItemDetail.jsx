@@ -9,7 +9,7 @@ const ItemDetail = () => {
   useEffect(() => { 
     const fetchData = async () => { 
       try {
-        const response = await axios.get(`https://findam.netlify.app/api/vi/items/${id}`)
+        const response = await axios.get(`https://findam.onrender.com/api/vi/items/${id}`)
 
         setItem(response.data.item)
       } catch (error) {

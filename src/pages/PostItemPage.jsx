@@ -25,7 +25,7 @@ const PostItemPage = () => {
       // Retrieve the token from local storage (or wherever you have stored it)
       const token = localStorage.getItem('token');
 
-      await axios.post('https://findam.netlify.app/api/v1/items', formData, {
+      await axios.post('https://findam.onrender.com/api/v1/items', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`, // Include the token in the request headers

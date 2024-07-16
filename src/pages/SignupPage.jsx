@@ -11,7 +11,7 @@ const SignupPage = () => {
   const handleSubmit = async (e) => { 
     e.preventDefault()
     try {
-      axios.post("https://findam.netlify.app/api/v1/signup", {username, email, password})
+      axios.post("https://findam.onrender.com/api/v1/signup", {username, email, password})
       navigate("/login")
     } catch (error) {
       console.log(error);
