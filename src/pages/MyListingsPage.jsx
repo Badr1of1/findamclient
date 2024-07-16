@@ -51,7 +51,7 @@ const MyListingsPage = () => {
       <div className="item-list">
         {items.map(item => (
           <div key={item._id} className="item">
-            <img src={item.photoUrl} alt={item.description} />
+            <img src={item.photoUrl.replace('http://', 'https://')} alt={item.description} />
             <h2>{item.description}</h2>
             <p>{item.location}</p>
             <p>{item.contactInfo}</p>
