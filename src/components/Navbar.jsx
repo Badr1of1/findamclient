@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <nav className='navbar'>
-      <Link className='logo' to="/items">Find Am</Link>
+      <span className='logo' >Find Am</span>
       <div className="navbar-items">
         {currentPath !== '/login' && currentPath !== '/signup' && (
           <>

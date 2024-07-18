@@ -14,11 +14,11 @@ const LoginPage = () => {
     try {
       const response = await axios.post('https://findam.onrender.com/api/v1/login', {username, password});
       const token = response.data.token;
-      console.log(response.data)
+      // console.log(response.data)
       localStorage.setItem('token', token)
       localStorage.setItem('user', JSON.stringify(response.data.user.username))
       setUser(response.data.user.username)
-      console.log(response.data.user.username)
+      // console.log(response.data.user.username)
       navigate('/items')
     } catch (error) {
       console.error('Login failed:', error)
