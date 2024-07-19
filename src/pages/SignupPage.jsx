@@ -19,13 +19,41 @@ const SignupPage = () => {
 
    }
   return (
-    <div>
-      <h4>Signup</h4>
+    <div className="signup-container">
+      <h4 className="signup-title">Create Account</h4>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="usename" value={username} onChange={(e) => { setUsername(e.target.value) }} required />
-        <input type="text" placeholder="email" value={email} onChange={(e) => { setEmail(e.target.value) }} required/>
-        <input type="password" placeholder="password" value = {password} onChange={(e) => { setPassword(e.target.value) }} required/>
-        <button type="submit">Sign Up</button>
+
+        <div className="from-group">
+          <label className="form-label">Username</label>
+          <input
+          className="form-input" 
+          type="text" 
+          value={username} 
+          onChange={(e) => { setUsername(e.target.value) }} 
+          required />
+        </div>
+
+        <div className="from-group">
+          <label className="form-label">Email</label>
+          <input
+          className="form-input" 
+          type="text" 
+          value={email} 
+          onChange={(e) => { setEmail(e.target.value) }} 
+          required/>
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Password</label>
+          <input
+          className="form-input" 
+          type="password" 
+          value = {password} 
+          onChange={(e) => { setPassword(e.target.value) }} 
+          required/>
+        </div>
+        
+        <button type="submit" className="signup-button">Create an account</button>
       </form>
     </div>
   );

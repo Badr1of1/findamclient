@@ -30,21 +30,19 @@ const LoginPage = () => {
       <h4 className="login-title">Login</h4>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label className="form-label">Username:</label>
+          <label className="form-label">Username</label>
           <input 
           type="text"
-          className="form-input"  
-          placeholder="Username" 
+          className="form-input"   
           value={username} 
           onChange={(e) => { setUsername(e.target.value) }} 
           required/>
         </div>
         <div className="form-group">
-          <label className="form-label">Password:</label>
+          <label className="form-label">Password</label>
           <input 
           type="password"
           className="form-input"  
-          placeholder="Password" 
           value={password} 
           onChange={(e) => {setPassword(e.target.value) }} 
           required/>
