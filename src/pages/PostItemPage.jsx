@@ -12,31 +12,25 @@ const PostItemPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData();
     formData.append('itemName', itemName);
     formData.append('description', description);
     formData.append('location', location);
     formData.append('contactInfo', contactInfo);
     formData.append('status', status);
-    
-    if (files) {
-      for (let i = 0; i < files.length; i++) {
-        formData.append('itemPictures', files[i]);
-      }
-    }
+    Array.from(files).forEach((file) => formData.append('itemPictures', file));
 
     try {
-      // Retrieve the token from local storage (or wherever you have stored it)
       const token = localStorage.getItem('token');
 
       await axios.post('https://findam.onrender.com/api/v1/items', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}`, // Include the token in the request headers
+          'Authorization': `Bearer ${token}`,
         },
       });
-      
+
       setMessage('Item posted successfully!');
     } catch (error) {
       console.error('Error posting item:', error);
@@ -50,39 +44,19 @@ const PostItemPage = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>
-          <input
-            type="text"
-            value={itemName}
-            onChange={(e) => setItemName(e.target.value)}
-            required
-          />
+          <input type="text" value={itemName} onChange={(e) => setItemName(e.target.value)} required />
         </div>
         <div>
           <label>Description:</label>
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
+          <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} required />
         </div>
         <div>
           <label>Location:</label>
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            required
-          />
+          <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required />
         </div>
         <div>
           <label>Contact Info:</label>
-          <input
-            type="text"
-            value={contactInfo}
-            onChange={(e) => setContactInfo(e.target.value)}
-            required
-          />
+          <input type="text" value={contactInfo} onChange={(e) => setContactInfo(e.target.value)} required />
         </div>
         <div>
           <label>Status:</label>
@@ -92,13 +66,8 @@ const PostItemPage = () => {
           </select>
         </div>
         <div>
-          <label>Photo:</label>
-          <input
-            type="file"
-            multiple
-            onChange={(e) => setFiles(e.target.files)}
-            required
-          />
+          <label>Photos:</label>
+          <input type="file" onChange={(e) => setFiles(e.target.files)} multiple required />
         </div>
         <button type="submit">Post Item</button>
       </form>
