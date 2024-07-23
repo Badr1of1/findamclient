@@ -12,7 +12,7 @@ const Navbar = () => {
     <nav className='navbar'>
       <span className='logo' >Find Am</span>
       <div className="navbar-items">
-        {currentPath !== '/login' && currentPath !== '/signup' && (
+        {currentPath !== '/login' && currentPath !== '/' && currentPath !== '/signup' && (
           <>
             <Link className="navbar-item" to="/items">Feed</Link>
             <Link className="navbar-item" to="/my-listings">My Listings</Link>
@@ -21,6 +21,7 @@ const Navbar = () => {
           </>
         )}
         {currentPath === '/login' && <Link className="navbar-item" to="/signup">Signup</Link>}
+        {currentPath === '/' && <Link className="navbar-item" to="/signup">Signup</Link>}
         {currentPath === '/signup' && <Link className="navbar-item" to="/login">Login</Link>}
       </div>
     </nav>

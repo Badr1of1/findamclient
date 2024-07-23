@@ -7,7 +7,7 @@ const PostItemPage = () => {
   const [location, setLocation] = useState('');
   const [contactInfo, setContactInfo] = useState('');
   const [status, setStatus] = useState('lost');
-  const [photo, setPhoto] = useState(null);
+  const [files, setPhoto] = useState(null);
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
@@ -19,7 +19,7 @@ const PostItemPage = () => {
     formData.append('location', location);
     formData.append('contactInfo', contactInfo);
     formData.append('status', status);
-    formData.append('photo', photo);
+    formData.append('files', files);
 
     try {
       // Retrieve the token from local storage (or wherever you have stored it)
