@@ -2,24 +2,29 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const PostItemPage = () => {
-  const [itemName, setItemName] = useState('')
+  const [itemName, setItemName] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
   const [contactInfo, setContactInfo] = useState('');
   const [status, setStatus] = useState('lost');
-  const [files, setPhoto] = useState(null);
+  const [files, setFiles] = useState(null);
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     const formData = new FormData();
-    formData.append('itemName', itemName)
+    formData.append('itemName', itemName);
     formData.append('description', description);
     formData.append('location', location);
     formData.append('contactInfo', contactInfo);
     formData.append('status', status);
-    formData.append('files', files);
+    
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        formData.append('itemPictures', files[i]);
+      }
+    }
 
     try {
       // Retrieve the token from local storage (or wherever you have stored it)
@@ -45,10 +50,12 @@ const PostItemPage = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>
-          <input type="text"
-          value={itemName}
-          onChange={(e) => {setItemName(e.target.value)}}
-          required />
+          <input
+            type="text"
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+            required
+          />
         </div>
         <div>
           <label>Description:</label>
@@ -88,7 +95,8 @@ const PostItemPage = () => {
           <label>Photo:</label>
           <input
             type="file"
-            onChange={(e) => setPhoto(e.target.files[0])}
+            multiple
+            onChange={(e) => setFiles(e.target.files)}
             required
           />
         </div>
