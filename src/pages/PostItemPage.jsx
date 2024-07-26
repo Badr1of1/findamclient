@@ -39,8 +39,8 @@ const PostItemPage = () => {
   };
 
   return (
-    <div>
-      <h1>Post an Item</h1>
+    <div className='post-container'>
+      <h1 className='postItem-title'>Post an Item</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>
